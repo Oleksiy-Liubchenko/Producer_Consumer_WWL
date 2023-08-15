@@ -12,3 +12,6 @@ class Order(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
