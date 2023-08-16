@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <div class="container">
+    <h2 class="display-3">Order List</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Task ID</th>
+        <th scope="col">Опис</th>
+        <th scope="col">Виконавець</th>
+        <th scope="col">Замовлення</th>
+        <th scope="col">Дія</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for order in orders %}
+        <tr>
+          <th scope="row">{{ order.task_id }}</th>
+          <td>{{ order.description }}</td>
+          <td>{{ order.employee.user.first_name }} ({{ order.employee.position }})</td>
+          <td>{{ order.name }}</td>
+          <td>
+            <form method="post" action="{% url 'delete_order' order.pk %}" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-link">
+                <i class="fas fa-trash-alt text-black"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock content %}
