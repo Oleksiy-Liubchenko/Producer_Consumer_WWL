@@ -24,4 +24,5 @@ urlpatterns = [
     path("order_list/", OrderListView.as_view(), name="order_list"),
     path("delete_order/<int:pk>/", delete_order, name="delete_order"),
     path("accounts/", include("django.contrib.auth.urls")),
+    path("", OrderListView.as_view(), name="order_list"),
 ]
