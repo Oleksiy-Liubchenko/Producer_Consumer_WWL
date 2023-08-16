@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'producer_consumer_app',
     'bootstrap5',
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    'django_celery_beat'
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,9 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 LOGIN_REDIRECT_URL = "order_list"
 LOGOUT_REDIRECT_URL = "login"
+
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_TIMEZONE = "Europe/Kyiv"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
