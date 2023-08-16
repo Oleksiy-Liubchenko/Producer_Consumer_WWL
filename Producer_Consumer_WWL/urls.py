@@ -16,14 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from producer_consumer_app.views import (
-    OrderListView,
-    delete_order
-)
+from producer_consumer_app.views import OrderListView, delete_order
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('order_list/', OrderListView.as_view(), name="order_list"),
-    path('delete_order/<int:pk>/', delete_order, name="delete_order"),
+    path("admin/", admin.site.urls),
+    path("order_list/", OrderListView.as_view(), name="order_list"),
+    path("delete_order/<int:pk>/", delete_order, name="delete_order"),
     path("accounts/", include("django.contrib.auth.urls")),
 ]

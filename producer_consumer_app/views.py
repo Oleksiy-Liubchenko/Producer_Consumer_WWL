@@ -21,10 +21,10 @@ def delete_order(request, pk):
     order = get_object_or_404(Order, pk=pk)
     if request.method == "POST":
         order_data = {
-            'pk': order.pk,
-            'task_id': order.task_id,
-            'name': order.name,
-            'employee': order.employee.username,
+            "pk": order.pk,
+            "task_id": order.task_id,
+            "name": order.name,
+            "employee": order.employee.username,
         }
 
         message = (

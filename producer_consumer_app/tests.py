@@ -11,28 +11,26 @@ class OrderViewsTestCase(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = User.objects.create_user(
-            username='testuser',
-            password='testpassword'
+            username="testuser", password="testpassword"
         )
-        self.client.login(
-            username='testuser',
-            password='testpassword'
-        )
+        self.client.login(username="testuser", password="testpassword")
         self.order = Order.objects.create(
             task_id=1,
-            name='Test Order',
-            description='Test Description',
-            employee=self.user
+            name="Test Order",
+            description="Test Description",
+            employee=self.user,
         )
 
     def test_order_list_view(self):
-        response = self.client.get(reverse('order_list'))
+        response = self.client.get(reverse("order_list"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Test Order')
+        self.assertContains(response, "Test Order")
 
     def test_delete_order_view(self):
-        response = self.client.post(reverse('delete_order', args=[self.order.pk]))
+        response = self.client.post(
+            reverse("delete_order", args=[self.order.pk])
+        )
 
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse('order_list'))
+        self.assertRedirects(response, reverse("order_list"))
