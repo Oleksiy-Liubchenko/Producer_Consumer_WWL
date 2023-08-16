@@ -14,4 +14,4 @@ class Order(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.task_id
