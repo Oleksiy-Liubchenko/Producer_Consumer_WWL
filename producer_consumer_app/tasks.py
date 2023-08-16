@@ -1,12 +1,15 @@
 import random
-from producer_consumer_app.models import Order, Employee
 
 from celery import shared_task
+
+from producer_consumer_app.models import Order, Employee
 
 
 @shared_task
 def order_creation() -> None:
-    random_employee = random.choice(list(Employee.objects.all()))
+    random_employee = random.choice(
+        list(Employee.objects.all())
+    )
 
     def generate_numeric_id(length=8):
         numeric_chars = "0123456789"

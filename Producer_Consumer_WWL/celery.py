@@ -11,7 +11,6 @@ os.environ.setdefault(
 )  # command helper for starting Celery on Windows
 app = Celery("Producer_Consumer_WWL")
 
-
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.
 # - namespace='CELERY' means all celery-related configuration keys
