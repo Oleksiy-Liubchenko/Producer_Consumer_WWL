@@ -1,5 +1,5 @@
 import random
-
+import uuid
 from celery import shared_task
 
 from producer_consumer_app.models import Order, Employee
@@ -20,7 +20,7 @@ def order_creation() -> None:
 
     Order.objects.create(
         task_id=generate_numeric_id(),
-        name="Task",
+        name=f"Task_{uuid.uuid4().hex}",
         description="Description",
         employee=random_employee,
     )
