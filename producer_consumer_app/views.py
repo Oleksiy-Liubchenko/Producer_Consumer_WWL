@@ -25,7 +25,10 @@ def delete_order(request, pk):
             "pk": order.pk,
             "task_id": order.task_id,
             "name": order.name,
-            "employee": order.employee.username,
+            "employee": (
+                f"{order.employee.first_name}_"
+                f"{order.employee.position}"
+            ),
         }
 
         message = (
